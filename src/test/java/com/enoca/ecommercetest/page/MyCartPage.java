@@ -19,7 +19,7 @@ public class MyCartPage extends BaseClass {
     FunctionLibrary functionLibrary;
     DashBoardPage dashBoardPage;
     CheckOutPage checkOutPage;
-    String qtyBeforeAdd;
+    int qtyBeforeAdd;
     @FindAll(@FindBy(xpath = "//button[@onclick=\"deleteItemClick($(this))\"]"))
     List<WebElement> listOfDeleteButton;
     @FindBy(xpath = "//span[text()=\"Sepetim\"]")
@@ -66,11 +66,11 @@ public class MyCartPage extends BaseClass {
         buttonAlisverisBaslat.click();
 
     }
-    public String addItemInCart(){
+    public int addItemInCart(){
         //checkOutPage.closeWarningAlert();
         dashBoardPage.openSepetim();
         functionLibrary.waitForElementPresent(qtyOfItem);
-        qtyBeforeAdd= qtyOfItem.getAttribute("value");
+        qtyBeforeAdd= Integer.parseInt(qtyOfItem.getAttribute("value"));
         functionLibrary.waitForElementPresentClick(buttonArti);
         buttonArti.click();
         return qtyBeforeAdd;
@@ -78,8 +78,8 @@ public class MyCartPage extends BaseClass {
     public boolean verifyItemAddedInCart(){
         MyCartPage myCart= new MyCartPage(driver);
        functionLibrary.waitForElementPresent(qtyOfItem);
-       String qtyAfterAdd= qtyOfItem.getAttribute("value");
-       return qtyAfterAdd.equalsIgnoreCase(qtyBeforeAdd);
+       int qtyAfterAdd= Integer.parseInt(qtyOfItem.getAttribute("value"));
+       return qtyAfterAdd-(qtyBeforeAdd)==1;
 
     }
 }
