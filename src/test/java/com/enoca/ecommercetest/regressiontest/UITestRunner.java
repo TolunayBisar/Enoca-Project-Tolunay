@@ -58,7 +58,7 @@ public class UITestRunner extends BaseClass {
         carkifelekPage.verifyDashBoardPageOpened();
     }
 
-    @Test(priority = 4,dependsOnMethods ="openDashboard" )
+    @Test(priority = 4 )
     public void logIn() {
         dashBoardPage.openHesabim();
         loginPage.logIn();
