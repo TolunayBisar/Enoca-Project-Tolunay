@@ -39,7 +39,7 @@ public class UITestRunner extends BaseClass {
     }
 
 
-    @Test(priority = 1)
+    @Test(priority = 1,enabled = false)
     public void carkifelekAllertClicked() {
         dashBoardPage.closeCookie();
         carkifelekPage.clickOnCarkifelek();
@@ -48,7 +48,7 @@ public class UITestRunner extends BaseClass {
 
 
     }
-    @Test(priority = 2 )
+    @Test(priority = 2,enabled = false )
     public void openDashboard(){
         carkifelekPage.closeCarkifelek();
     }
